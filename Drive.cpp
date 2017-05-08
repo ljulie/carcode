@@ -48,27 +48,33 @@ void CDrive::forward()
 
 void CDrive::reverse()
 {
+	gpioPWM(PWMA, 40);
+	gpioPWM(PWMB, 40);
 	gpioWrite(AIN1, HIGH);
 	gpioWrite(AIN2, LOW);
-	gpioWrite(BIN1, LOW);
-	gpioWrite(BIN2, HIGH);
+	gpioWrite(BIN1, HIGH);
+	gpioWrite(BIN2, LOW);
 }
 
-void CDrive::left()
+void CDrive::right()
 {
+	gpioPWM(PWMA, 100);
+	gpioPWM(PWMB, 50);
 	gpioWrite(AIN1, LOW);
 	gpioWrite(AIN2, HIGH);
 	gpioWrite(BIN1, LOW);
-	gpioWrite(BIN2, LOW);
+	gpioWrite(BIN2, HIGH);
 
 	if (turn_90)
 		waitKey(1000);
 }
 
-void CDrive::right()
+void CDrive::left()
 {
+	gpioPWM(PWMA, 50);
+	gpioPWM(PWMB, 100);
 	gpioWrite(AIN1, LOW);
-	gpioWrite(AIN2, LOW);
+	gpioWrite(AIN2, HIGH);
 	gpioWrite(BIN1, LOW);
 	gpioWrite(BIN2, HIGH);
 
@@ -98,7 +104,7 @@ void CDrive::stop()
 
 void CDrive::pedestrian()
 {
-	drive.s_break();
-	for (int serv = SERV_MIN; serv < SERV_MAX; serv + 10)
+	s_break();
+	for (int serv = SERV_MIN; serv < SERV_MAX; serv += 10)
 		gpioServo(SERV, serv);
 }

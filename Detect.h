@@ -50,15 +50,27 @@ private:
 	Mat camera;
 	Mat binary_img;
 	Mat HSV_img;
+	Mat orange_img;
+	Mat green_img;
+	Mat ped_img;
+
+	char current_mode;
+	char prev_mode;
 
 public:
 	CDetect();
 	~CDetect();
 
 	void findCenter();
+
+	void findGreen();
+	void findOrange();
+	void findPed();
+
 	void GreenR();
 	void OrangeL();
 	void Pedestrian();
 	void run();
+	void control();
 };
 

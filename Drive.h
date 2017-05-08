@@ -1,6 +1,6 @@
 #pragma once
-#include <pigpio.h>
-#include <unistd.h>
+//#include <pigpio.h>
+//#include <unistd.h>
 #include <stdio.h>
 #include <iostream>
 #include <time.h>
